@@ -1,0 +1,12 @@
+[Admin panel]
+U tablici knjiga se ne prikazuju pravi autori (Pero Perić)
+Dodati delete na knjge
+Dodati delete na obavijesti
+Slika se uploada kod uređivanja obavijesti ali se ne doda img tag u textarea kako spada
+
+[HSN]
+Srediti tražilicu
+Dodati kategorije u izbornik
+
+[Baza]
+Width i Height od formata knjige mora biti FLOAT

@@ -1,0 +1,23 @@
+body {
+    background-color: #f0f4f7;
+}
+
+.content {
+    position: relative;
+    top: 51px;
+}
+
+.sidebar {
+    position: fixed;
+    padding: 0;
+    top: 51px;
+    bottom: 0;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border-right: 1px solid #d0d8de;
+}
+
+.active a {
+    color: #fff !important;
+    background-color: #428bca !important;
+}

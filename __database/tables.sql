@@ -1,0 +1,97 @@
+DROP TABLE IF EXISTS Category;
+CREATE TABLE Category
+(
+    IDCategory  INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Name        TINYTEXT NOT NULL
+) CHARACTER SET=utf8;
+
+
+
+DROP TABLE IF EXISTS Author;
+CREATE TABLE Author
+(
+    IDAuthor    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Name        TINYTEXT NOT NULL
+) CHARACTER SET=utf8;
+
+
+
+DROP TABLE IF EXISTS BookFormat;
+CREATE TABLE BookFormat
+(
+    IDBookFormat    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Width           SMALLINT NOT NULL,
+    Height          SMALLINT NOT NULL
+) CHARACTER SET=utf8;
+
+
+
+DROP TABLE IF EXISTS Binding;
+CREATE TABLE Binding
+(
+    IDBinding   INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Name        TINYTEXT NOT NULL
+) CHARACTER SET=utf8;
+
+
+
+DROP TABLE IF EXISTS Book;
+CREATE TABLE Book
+(
+    IDBook          INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Title           TINYTEXT NOT NULL,
+    Subtitle        TINYTEXT NULL,
+    ShowSubtitle    BOOL DEFAULT FALSE,
+    PublicationYear SMALLINT NULL,
+    ISBN            CHAR(32) NULL UNIQUE,
+    Price           FLOAT NULL,
+    DiscountPrice   FLOAT NULL,
+    BookFormatID    INT UNSIGNED NULL,
+    BindingID       INT UNSIGNED NULL,
+    Pages           SMALLINT UNSIGNED NULL,
+    Description     TEXT NULL,
+    Cover           TINYTEXT NULL,
+    IsInGallery     BOOL DEFAULT FALSE,
+
+    FOREIGN KEY (BookFormatID) REFERENCES BookFormat(IDBookFormat),
+    FOREIGN KEY (BindingID) REFERENCES Binding(IDBinding)
+) CHARACTER SET=utf8;
+
+
+
+DROP TABLE IF EXISTS BookAuthor;
+CREATE TABLE BookAuthor
+(
+    IDBookAuthor    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    BookID          INT UNSIGNED NOT NULL,
+    AuthorID        INT UNSIGNED NOT NULL,
+
+    FOREIGN KEY (BookID) REFERENCES Book(IDBook),
+    FOREIGN KEY (AuthorID) REFERENCES Author(IDAuthor)
+) CHARACTER SET=utf8;
+
+
+
+DROP TABLE IF EXISTS BookCategory;
+CREATE TABLE BookCategory
+(
+    IDBookCategory  INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    BookID          INT UNSIGNED NOT NULL,
+    CategoryID      INT UNSIGNED NOT NULL,
+    
+    FOREIGN KEY (BookID) REFERENCES Book(IDBook),
+    FOREIGN KEY (CategoryID) REFERENCES Category(IDCategory)
+) CHARACTER SET=utf8;
+
+
+
+DROP TABLE IF EXISTS Notice;
+CREATE TABLE Notice
+(
+    IDNotice    INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Time        TIMESTAMP,
+    Title       TINYTEXT NOT NULL,
+    Text        TEXT NOT NULL,
+    IsPinned    BOOL DEFAULT FALSE
+) CHARACTER SET=utf8;
+
