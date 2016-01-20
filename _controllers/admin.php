@@ -253,4 +253,44 @@
 
         return ListGalleryImages();
     }
+
+    function ImportBooks() {
+        if (!isset($_POST['submit'])) {
+?>
+        <form enctype="multipart/form-data" method="post" action="">
+            <input type="file" name="file" />
+            <input type="submit" name="submit" />
+        </form>
+<?php
+        } else {
+            $file = fopen($_FILES['file']['tmp_name'], 'r');
+            $c = new \Connection();
+            $line = fgets($file);
+
+            echo '<table borders="1">';
+
+             while (($line = fgets($file)) != FALSE) {
+                $cell = explode("\t", $line);
+
+                if ($cell[5]) {
+                    $format = explode('x', $cell[5]);
+                    $width = str_replace(',', '.', $format[0]);
+                    $height = str_replace(',', '.', $format[1]);
+                } else {
+                    $width = "NULL";
+                    $height = "NULL";
+                }
+
+                //                                                                                                     ISBN                      WIDTH, HEIGHT
+                $c->call('BookCreate', array("'$cell[0]'", "'$cell[2]'", "'$cell[3]'", "0", "'$cell[1]'", "$cell[8]", "NULL", "$cell[7]", "NULL", "0", "0", "'$cell[6]'", "$cell[9]", "'$cell[10]'", "'$cell[11]'", "1"));
+
+                echo "<tr><td>$cell[0]</td><td>$cell[1]</td><td>$width</td><td>$height</td></tr>";
+                /*echo "<tr><td>";
+                echo "CALL BookCreate('$cell[0]', '$cell[2]', '$cell[3]', 0, '$cell[1]', $cell[8], '$cell[4]', $cell[7], NULL, $width, $height, '$cell[6]', $cell[9], '$cell[10]', '$cell[11]', 1);";
+                echo "</td></tr>";*/
+             }
+
+             echo '</table>';
+        }
+    }
 ?>

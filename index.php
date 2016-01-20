@@ -184,6 +184,10 @@
         controller('admin.php', 'UploadGalleryImage');
     });
 
+    route('/admin/import/', function () {
+        controller('admin.php', 'ImportBooks');
+    });
+
 /* 404 */
     route('/404/', function () {
         controller('hsn.php', 'NotFound');
