@@ -19,9 +19,11 @@
     function Books($page) {
         global $common;
 
+        $booksPerPage = 25;
+
         return view('admin/admin.php', array_merge($common, array(
             'content' => view('admin/books.php', 
-                model('admin.php', 'Books', array(($page - 1)*10, 10))
+                model('admin.php', 'Books', array(($page - 1)*$booksPerPage, $booksPerPage))
             )
         )));
     }
