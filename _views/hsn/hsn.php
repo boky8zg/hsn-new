@@ -46,16 +46,18 @@
                         <?php endeach(); ?>
                     </ul>
 
-                    <?php if (fnmatch('/biblioteke/*/', route())): ?>
-                    <h3>Kategorije</h3>
-                    <ul class="nav nav-pills nav-stacked sub-menu">
-                        <li><a href="">Test</a></li>
-                    </ul>
-                    <?php endif; ?>
-
                     <footer>
                         <small>&copy; Bojan Došen, 2015.</small>
                     </footer>
+                </div>
+
+                <div class="navbar-categories">
+                    <h3>Kategorije</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <?php starteach($array['categories']); ?>
+                        <li><a href="/biblioteke/{{IDCategory}}/">{{Name}}</a></li>
+                        <?php endeach(); ?>
+                    </ul>
                 </div>
 
                 {{content}}

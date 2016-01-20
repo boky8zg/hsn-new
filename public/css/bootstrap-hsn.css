@@ -26,6 +26,7 @@ body {
 }
 
 .wrapper {
+    position: relative;
     margin: 0 auto;
     max-width: 1400px;
     height: 100%;
@@ -42,7 +43,8 @@ body {
     z-index: 1000;
 }
 
-.navbar-left h3 {
+.navbar-left h3,
+.navbar-categories h3 {
     margin: 3em 30px 1em 30px;
     color: #4d4d4a;
     font-size: 0.8em;
@@ -50,7 +52,8 @@ body {
     text-transform: uppercase;
 }
 
-.navbar-left .nav a {
+.navbar-left .nav a,
+.navbar-categories .nav a {
      margin-left: 11px;
      border-left: 4px solid transparent;
      color: #fff;
@@ -58,12 +61,24 @@ body {
 }
 
 .navbar-left .nav li.active a,
-.navbar-left .nav a:hover {
+.navbar-left .nav a:hover,
+.navbar-categories .nav li.active a,
+.navbar-categories .nav a:hover {
     background-color: #fff;
     border-left: 4px solid #d9aa48;
     border-radius: 0;
     color: #484843;
     font-weight: 600;
+}
+
+.navbar-categories {
+    display: none;
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    left: 200px;
+    background-color: #15150f;
+    z-index: 1000;
 }
 
 .brand {

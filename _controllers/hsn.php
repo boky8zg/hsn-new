@@ -5,7 +5,8 @@
 
     global $common;
     $common = array(
-        'root' => root()
+        'root' => root(),
+        'categories' => model('hsn.php', 'CategoriesReadAll')
     );
 
     function Books($categoryId) {

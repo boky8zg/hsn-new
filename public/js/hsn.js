@@ -65,53 +65,17 @@ $(function () {
         $('.wrapper').addClass('show-info-bar');
         $('.info-bar>.book-summary-wrapper').css('top', $('.info-bar-header').outerHeight() + $('.book-authors').outerHeight());
     });
-    
+
     $('#close-sidebar').click(function () {
         $('.wrapper').removeClass('show-info-bar');
     });
+
+    $('.navbar-left a:contains(Biblioteke)').click(function (e) {
+        $('.navbar-categories').fadeToggle();
+        e.preventDefault();
+    });
+
     /*
-    $('.dropdown-menu a').on('click', function (event) {
-    var $target = $(event.currentTarget),
-    val = parseInt($target.attr('data-value')),
-    $inp = $target.find('input'),
-    idx;
-
-    if ((idx = options.indexOf(val)) > -1) {
-    options.splice(idx, 1);
-    setTimeout(function () { $inp.prop('checked', false) }, 0);
-    } else {
-    options.push(val);
-    setTimeout(function () { $inp.prop('checked', true) }, 0);
-    }
-
-    get_ids(options, null, get_books);
-
-    $(event.target).blur();
-
-    return false;
-    });
-
-    $('#select-all').on('click', function () {
-    setTimeout(function () {
-    $('.dropdown-menu input:not(:first)').prop('checked', $('#select-all>input').prop('checked'))
-    });
-    });
-
-    $('#search').on('keyup', function () {
-    var val = $(this).val();
-
-    if (val == '') {
-    display_books(getBookIdsByCategory(options));
-    } else {
-    display_books(search_books(val, options));
-    }
-    });
-
-    $('#btn-clear').on('click', function () {
-    $('#search').val('').focus();
-    display_books(getBookIdsByCategory(options));
-    });
-
     $('#submit-mail').on('click', function (e) {
     $.ajax({
     type: 'POST',

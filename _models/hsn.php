@@ -37,4 +37,12 @@
 
         return $outp;
     }
+
+    function CategoriesReadAll() {
+        $c = new \Connection();
+
+        $outp = $c->call('CategoriesReadAll');
+
+        return $outp;
+    }
 ?>
