@@ -178,6 +178,7 @@ CREATE PROCEDURE BookReadByCategory (
 )
 BEGIN
     SELECT
+        BC.CategoryID,
         B.IDBook,
         B.Title,
         B.Subtitle,
@@ -194,9 +195,9 @@ BEGIN
         B.Cover,
         B.IsInGallery
     FROM Book B
-    INNER JOIN BookFormat AS BF
+    LEFT OUTER JOIN BookFormat AS BF
         ON BF.IDBookFormat = B.BookFormatID
-    INNER JOIN Binding AS BI
+    LEFT OUTER JOIN Binding AS BI
         ON BI.IDBinding = B.BindingID
     INNER JOIN BookCategory AS BC
         ON BC.BookID = B.IDBook

@@ -266,7 +266,7 @@
             $file = fopen($_FILES['file']['tmp_name'], 'r');
             $c = new \Connection();
             $line = fgets($file);
-
+            echo '<html><head><meta charset="utf-8" /></head><body>';
             echo '<table borders="1">';
 
              while (($line = fgets($file)) != FALSE) {
@@ -277,20 +277,38 @@
                     $width = str_replace(',', '.', $format[0]);
                     $height = str_replace(',', '.', $format[1]);
                 } else {
-                    $width = "NULL";
-                    $height = "NULL";
+                    $width = "0";
+                    $height = "0";
                 }
 
-                //                                                                                                     ISBN                      WIDTH, HEIGHT
-                $c->call('BookCreate', array("'$cell[0]'", "'$cell[2]'", "'$cell[3]'", "0", "'$cell[1]'", "$cell[8]", "NULL", "$cell[7]", "NULL", "0", "0", "'$cell[6]'", "$cell[9]", "'$cell[10]'", "'$cell[11]'", "1"));
+                foreach ($cell as $key => $val) {
+                    $cell[$key] = FormatIt($cell[$key]);
+                }
 
-                echo "<tr><td>$cell[0]</td><td>$cell[1]</td><td>$width</td><td>$height</td></tr>";
-                /*echo "<tr><td>";
-                echo "CALL BookCreate('$cell[0]', '$cell[2]', '$cell[3]', 0, '$cell[1]', $cell[8], '$cell[4]', $cell[7], NULL, $width, $height, '$cell[6]', $cell[9], '$cell[10]', '$cell[11]', 1);";
-                echo "</td></tr>";*/
+                //$c->call('BookCreate', array($cell[0], $cell[2], $cell[3], 0, $cell[1], $cell[8], $cell[4], $cell[7], "NULL", $width, $height, $cell[6], $cell[9], $cell[10], $cell[11], 1));
+
+                //echo "<tr><td>$cell[0]</td><td>$cell[1]</td><td>$width</td><td>$height</td></tr>";
+                echo "<tr><td>";
+                echo "CALL BookCreate($cell[0], $cell[2], $cell[3], 0, $cell[1], $cell[8], $cell[4], $cell[7], NULL, $width, $height, $cell[6], $cell[9], $cell[10], $cell[11], 1);";
+                echo "</td></tr>";
              }
 
-             echo '</table>';
+             echo '</table></body></html>';
         }
+    }
+
+    function FormatIt($value) {
+        $value = trim($value);
+
+        if ($value == '') {
+            return 'NULL';
+        }
+
+        if (is_numeric($value)) {
+            return $value;
+        }
+        
+        $value = str_replace("'", "''", $value);
+        return "'$value'";
     }
 ?>

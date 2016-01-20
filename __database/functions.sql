@@ -46,6 +46,10 @@ NOT DETERMINISTIC
 BEGIN
     DECLARE BindingID   INT UNSIGNED;
 
+    IF (ISNULL(BookBinding)) THEN
+        RETURN NULL;
+    END IF;
+
     IF EXISTS(SELECT IDBinding FROM Binding WHERE Name = BookBinding) THEN
         RETURN (SELECT IDBinding FROM Binding WHERE Name = BookBinding);
     ELSE
