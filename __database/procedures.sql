@@ -110,9 +110,9 @@ BEGIN
         B.Cover,
         B.IsInGallery
     FROM Book B
-    INNER JOIN BookFormat AS BF
+    LEFT OUTER JOIN BookFormat AS BF
         ON BF.IDBookFormat = B.BookFormatID
-    INNER JOIN Binding AS BI
+    LEFT OUTER JOIN Binding AS BI
         ON BI.IDBinding = B.BindingID
     WHERE IDBook = InBookID;
 
@@ -161,9 +161,9 @@ BEGIN
         B.Cover,
         B.IsInGallery
     FROM Book B
-    INNER JOIN BookFormat AS BF
+    LEFT OUTER JOIN BookFormat AS BF
         ON BF.IDBookFormat = B.BookFormatID
-    INNER JOIN Binding AS BI
+    LEFT OUTER JOIN Binding AS BI
         ON BI.IDBinding = B.BindingID
     ORDER BY B.IDBook DESC
     LIMIT Start, Number;
@@ -463,7 +463,39 @@ CREATE PROCEDURE NoticesRead (
 BEGIN
     SELECT *
     FROM Notice
-    ORDER BY IDNotice DESC
+    ORDER BY Time DESC
+    LIMIT Start, Number;
+    /* Maybe there is problem with LIMIT in older versions of MySQL */
+END;
+
+
+
+DROP PROCEDURE IF EXISTS NoticesReadUnpinned;
+CREATE PROCEDURE NoticesReadUnpinned (
+    IN Start    INT,
+    IN Number   INT
+)
+BEGIN
+    SELECT *
+    FROM Notice
+    WHERE IsPinned = False
+    ORDER BY Time DESC
+    LIMIT Start, Number;
+    /* Maybe there is problem with LIMIT in older versions of MySQL */
+END;
+
+
+
+DROP PROCEDURE IF EXISTS NoticesReadPinned;
+CREATE PROCEDURE NoticesReadPinned (
+    IN Start    INT,
+    IN Number   INT
+)
+BEGIN
+    SELECT *
+    FROM Notice
+    WHERE IsPinned = True
+    ORDER BY Time DESC
     LIMIT Start, Number;
     /* Maybe there is problem with LIMIT in older versions of MySQL */
 END;

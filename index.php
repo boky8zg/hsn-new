@@ -49,7 +49,11 @@
     });
 
     route('/obavijesti/', function () {
-        controller('hsn.php', 'Notices');
+        header('Location: /obavijesti/1/');
+    });
+
+    route('/obavijesti/*/', function () {
+        controller('hsn.php', 'Notices', array(param(1)));
     });
 
     route('/izdanja/', function () {
@@ -95,16 +99,16 @@
             $_POST['Categories'],
             $_POST['Authors'],
             $_POST['Title'],
-            $_POST['Subtitle'],
+            isset($_POST['Subtitle']) ? $_POST['Subtitle'] : '',
             isset($_POST['ShowSubtitle']) ? $_POST['ShowSubtitle'] : '',
-            $_POST['PublicationYear'],
-            $_POST['ISBN'],
+            isset($_POST['PublicationYear']) ? $_POST['PublicationYear'] : '',
+            isset($_POST['ISBN']) ? $_POST['ISBN'] : '',
             $_POST['Price'],
-            $_POST['DiscountPrice'],
-            $_POST['Format'],
-            $_POST['Binding'],
-            $_POST['Pages'],
-            $_POST['Description'],
+            isset($_POST['DiscountPrice']) ? $_POST['DiscountPrice'] : '',
+            isset($_POST['Format']) ? $_POST['Format'] : '0x0',
+            isset($_POST['Binding']) ? $_POST['Binding'] : '',
+            isset($_POST['Pages']) ? $_POST['Pages'] : '',
+            isset($_POST['Description']) ? $_POST['Description'] : '',
             $_POST['OldCover'],
             $_FILES['Cover'],
             isset($_POST['IsInGallery']) ? $_POST['IsInGallery'] : ''

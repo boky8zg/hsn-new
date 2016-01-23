@@ -28,7 +28,7 @@
                 <?php endeach(); ?>
             </tbody>
         </table>
-
+        
         <nav>
             <ul class="pagination">
                 <li<?php if ($array['page'] == 1): ?> class="disabled"<?php endif; ?>>

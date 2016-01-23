@@ -308,7 +308,8 @@ footer small {
     box-shadow: 0 0 16px #d9aa48;
 }
 
-.book .price {
+.book .price,
+.book .old-price {
     position: absolute;
     padding: 0 2px;
     box-sizing: border-box;
@@ -322,6 +323,12 @@ footer small {
     border-bottom-left-radius: 2px;
     line-height: 20px;
     text-align: right;
+}
+
+.book .old-price {
+    bottom: 45px;
+    color: #ddddda;
+    text-decoration: line-through;
 }
 
 .show-info-bar .library,

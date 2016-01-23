@@ -55,7 +55,7 @@
                     <h3>Kategorije</h3>
                     <ul class="nav nav-pills nav-stacked">
                         <?php starteach($array['categories']); ?>
-                        <li><a href="/biblioteke/{{IDCategory}}/">{{Name}}</a></li>
+                        <li><a href="/biblioteke/{{IDCategory}}/" data-href="{{IDCategory}}">{{Name}}</a></li>
                         <?php endeach(); ?>
                     </ul>
                 </div>

@@ -13,6 +13,10 @@
                 $outp[$key]['Price'] = 'Rasprodano';
             }
 
+            if ($outp[$key]['DiscountPrice']) {
+                $outp[$key]['DiscountPrice'] = number_format($outp[$key]['DiscountPrice'], 2, ',', ' ') . ' kn';
+            }
+
             if ($outp[$key]['Description']) {
                 $outp[$key]['Description'] = 'Opis:<br>' . $outp[$key]['Description'] . '<br><br>';
             } else {
@@ -44,5 +48,23 @@
         $outp = $c->call('CategoriesReadAll');
 
         return $outp;
+    }
+
+    function NoticesRead($start, $number) {
+        $c = new \Connection();
+        $count = $c->call('NoticesCount');
+
+        $c = new \Connection();
+        $pinned = $c->call('NoticesReadPinned', array(0, 5));           /* Max 5 pinned notices */
+
+        $c = new \Connection();
+        $unpinned = $c->call('NoticesReadUnpinned', array($start, $number));
+        
+        return array(
+            'pinned' => $pinned,
+            'unpinned' => $unpinned,
+            'pages' => ceil(intval($count[0]['Count']) / $number),
+            'page' => ($start / $number) + 1
+        );
     }
 ?>

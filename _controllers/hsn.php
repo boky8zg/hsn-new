@@ -27,11 +27,13 @@
         ))));
     }
 
-    function Notices() {
+    function Notices($page) {
         global $common;
 
+        $noticesPerPage = 10;
+
         return view('hsn/hsn.php', array_merge($common, array(
-            'content' => view('hsn/notices.php', array_merge($common)
+            'content' => view('hsn/notices.php', array_merge($common, model('hsn.php', 'NoticesRead', array(($page - 1)*$noticesPerPage, $noticesPerPage)))
         ))));
     }
 

@@ -20,7 +20,7 @@
         function query($queryString, $params = NULL) {
             $queryString = isset($params) ? str_format($queryString, $params) : $queryString;
             $queryResult = mysqli_query($this->connection, $queryString);
-
+            
             if (!is_bool($queryResult)) {
                 if (mysqli_num_rows($queryResult) > 0) {
                     $outputArray = array();

@@ -16,7 +16,16 @@
 <div class="content">
     <div class="header">
         <div class="col col-1">
-            <h1>Biblioteke</h1>
+            <h1>
+                <?php
+                    foreach ($array['categories'] as $category) {
+                        if ($category['IDCategory'] == param(1)) {
+                            echo $category['Name'];
+                            break;
+                        }
+                    }
+                ?>
+            </h1>
         </div>
         <div class="col col-2"></div>
 
@@ -35,7 +44,12 @@
         <div class="book" id="book-<?php echo $book['IDBook']; ?>" data-description="<?php echo $book['Description']; ?>" data-subtitle="<?php echo $book['Subtitle']; ?>">
             <div class="cover">
                 <img src="/images/<?php if ($book['Cover']): ?>covers/<?php echo $book['Cover']; else: ?>no-cover<?php endif; ?>.jpg" alt="Knjiga" />
+                <?php if ($book['DiscountPrice']): ?>
+                <div class="old-price"><?php echo $book['Price']; ?></div>
+                <div class="price"><?php echo $book['DiscountPrice']; ?></div>
+                <?php else: ?>
                 <div class="price"><?php echo $book['Price']; ?></div>
+                <?php endif; ?>
             </div>
             <h3 class="title"><?php echo $book['Title']; ?></h3>
             <?php if($book['ShowSubtitle']): ?>
