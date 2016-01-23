@@ -37,12 +37,14 @@
         ))));
     }
 
-    function Editions() {
+    function Editions($categoryId) {
         global $common;
 
         return view('hsn/hsn.php', array_merge($common, array(
-            'content' => view('hsn/editions.php', array_merge($common)
-        ))));
+            'content' => view('hsn/editions.php', array_merge($common, array(
+                'books' => model('hsn.php', 'BookReadByCategory', array($categoryId))
+            )))
+        )));
     }
 
     function Location() {

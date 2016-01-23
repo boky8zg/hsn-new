@@ -33,7 +33,13 @@
                     mysqli_next_result($this->connection);
 
                     return $outputArray;
+                } else {
+                    mysqli_free_result($queryResult);
+                    mysqli_next_result($this->connection);
                 }
+            } else {
+                mysqli_free_result($queryResult);
+                mysqli_next_result($this->connection);
             }
 
             return FALSE;

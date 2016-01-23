@@ -72,6 +72,16 @@ $(function () {
 
     $('.navbar-left a:contains(Biblioteke)').click(function (e) {
         $('.navbar-categories').fadeToggle();
+        $('.navbar-categories a').each(function () {
+            $(this).attr('href', '/biblioteke/' + $(this).data('href') + '/');
+        });
+        e.preventDefault();
+    });
+    $('.navbar-left a:contains(Izdanja)').click(function (e) {
+        $('.navbar-categories').fadeToggle();
+        $('.navbar-categories a').each(function () {
+            $(this).attr('href', '/izdanja/' + $(this).data('href') + '/');
+        });
         e.preventDefault();
     });
 

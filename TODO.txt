@@ -10,6 +10,7 @@ Srediti tražilicu
 Dodati Izdanja
 Prikazati vrijeme obavijesti
 Napraviti formu za kontakt da radi
+Srediti prikaz naslova stranice (u head-u)
 
 [Baza]
 Width i Height od formata knjige mora biti FLOAT

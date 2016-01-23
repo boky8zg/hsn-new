@@ -15,7 +15,7 @@
 
 <div class="content">
     <div class="header">
-        <div class="col col-1">
+        <div class="col col-1 extra">
             <h1>
                 <?php
                     foreach ($array['categories'] as $category) {
@@ -27,7 +27,6 @@
                 ?>
             </h1>
         </div>
-        <div class="col col-2"></div>
 
         <div class="col col-3">
             <div class="input-group">
@@ -56,9 +55,9 @@
             <h3 class="bookSubtitle"><?php echo $book['Subtitle']; ?></h3>
             <?php endif; ?>
 
-            <?php foreach($book['Authors'] as $author): ?>
+            <?php if($book['Authors']): foreach($book['Authors'] as $author): ?>
             <h4 class="author"><?php echo $author['Name']; ?></h4>
-            <?php endforeach; ?>
+            <?php endforeach; endif; ?>
         </div>
         <?php endforeach; ?>
         <textarea><?php var_dump($array['books']); ?></textarea>

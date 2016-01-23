@@ -2,8 +2,8 @@
 <html lang="hr">
     <head>
         <meta charset="utf-8" />
-        <title><?php echo $sites[$site]['menu']; ?> &#x2756; Hrvatska Sveučilišna Naklada</title>
-
+        <title>Hrvatska Sveučilišna Naklada</title>
+        <!--&#x2756;-->
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="description" content="Hrvatska sveučilišna naklada" />

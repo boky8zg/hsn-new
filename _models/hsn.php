@@ -34,7 +34,7 @@
             if ($outp[$key]['Width'] && $outp[$key]['Height']) {
                 $outp[$key]['Description'] .= 'Format: ' . $outp[$key]['Width'] . 'x' . $outp[$key]['Height'] . '<br>';
             }
-
+            
             $authors = $c->call('BookReadAuthors', array($outp[$key]['IDBook']));
             $outp[$key]['Authors'] = $authors;
         }

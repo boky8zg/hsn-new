@@ -57,7 +57,11 @@
     });
 
     route('/izdanja/', function () {
-        controller('hsn.php', 'Editions');
+        header('Location: /izdanja/1/');
+    });
+
+    route('/izdanja/*/', function () {
+        controller('hsn.php', 'Editions', array(param(1)));
     });
 
     route('/lokacija/', function () {
