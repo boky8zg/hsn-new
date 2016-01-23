@@ -2,9 +2,9 @@
     function Menu() {
         $menu = array(
             array('O nama', '/o-nama/', '/o-nama/'),
-            array('Obavijesti', '/obavijesti/', '/obavijesti/'),
+            array('Obavijesti', '/obavijesti/*/', '/obavijesti/'),
             array('Biblioteke', '/biblioteke/*/', '/'),
-            array('Izdanja', '/izdanja/', '/izdanja/'),
+            array('Izdanja', '/izdanja/*/', '/izdanja/'),
             array('Lokacija', '/lokacija/', '/lokacija/'),
             array('Kontakt', '/kontakt/', '/kontakt/'),
         );
