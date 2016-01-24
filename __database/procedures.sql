@@ -170,6 +170,38 @@ BEGIN
     /* Maybe there is problem with LIMIT in older versions of MySQL */
 END;
 
+/*
+CREATE PROCEDURE BooksRead (
+    IN Start    INT,
+    IN Number   INT
+)
+BEGIN
+	SET @asd = CONCAT('SELECT
+        B.IDBook,
+        B.Title,
+        B.Subtitle,
+        B.ShowSubtitle,
+        B.PublicationYear,
+        B.ISBN,
+        B.Price,
+        B.DiscountPrice,
+        BF.Width,
+        BF.Height,
+        BI.Name Binding,
+        B.Description,
+        B.Cover,
+        B.IsInGallery
+    FROM Book B
+    LEFT OUTER JOIN BookFormat AS BF
+        ON BF.IDBookFormat = B.BookFormatID
+    LEFT OUTER JOIN Binding AS BI
+        ON BI.IDBinding = B.BindingID
+    ORDER BY B.IDBook DESC
+    LIMIT ', Start, ', ', Number, '; ');
+	PREPARE zxc FROM @asd;
+  	EXECUTE zxc;
+END;
+*/
 
 
 DROP PROCEDURE IF EXISTS BookReadByCategory;
@@ -370,7 +402,7 @@ BEGIN
         A.*
     FROM BookAuthor BA
     INNER JOIN Author A
-        ON a.IDAuthor = BA.AuthorID
+        ON A.IDAuthor = BA.AuthorID
     WHERE BookID = InBookID;
 END;
 
@@ -468,6 +500,23 @@ BEGIN
     /* Maybe there is problem with LIMIT in older versions of MySQL */
 END;
 
+/*
+CREATE PROCEDURE NoticesRead (
+    IN Start    INT,
+    IN Number   INT
+)
+BEGIN
+	SET @asd = CONCAT('SELECT *
+    FROM Notice
+    ORDER BY Time DESC
+    LIMIT ', Start, ', ', Number, ';');
+    
+    PREPARE zxc FROM @asd;
+  	EXECUTE zxc;
+END;
+
+*/
+
 
 
 DROP PROCEDURE IF EXISTS NoticesReadUnpinned;
@@ -484,6 +533,24 @@ BEGIN
     /* Maybe there is problem with LIMIT in older versions of MySQL */
 END;
 
+/*
+CREATE PROCEDURE NoticesReadUnpinned (
+    IN Start    INT,
+    IN Number   INT
+)
+BEGIN
+	SET @asd = CONCAT('SELECT *
+    FROM Notice
+    WHERE IsPinned = False
+    ORDER BY Time DESC
+    LIMIT ', Start, ', ', Number, ';');
+    
+    PREPARE zxc FROM @asd;
+  	EXECUTE zxc;
+    
+END;
+*/
+
 
 
 DROP PROCEDURE IF EXISTS NoticesReadPinned;
@@ -499,6 +566,23 @@ BEGIN
     LIMIT Start, Number;
     /* Maybe there is problem with LIMIT in older versions of MySQL */
 END;
+
+/*
+CREATE PROCEDURE NoticesReadPinned (
+    IN Start    INT,
+    IN Number   INT
+)
+BEGIN
+    SET @asd = CONCAT('SELECT *
+    FROM Notice
+    WHERE IsPinned = True
+    ORDER BY Time DESC
+    LIMIT ', Start, ', ', Number, ';');
+    
+	PREPARE zxc FROM @asd;
+  	EXECUTE zxc;
+END;
+*/
 
 
 
