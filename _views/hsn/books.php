@@ -60,7 +60,9 @@
             <?php endforeach; endif; ?>
         </div>
         <?php endforeach; ?>
+<!--
         <textarea><?php var_dump($array['books']); ?></textarea>
+-->
     <!--
     <div class="book">
         <div class="cover">
