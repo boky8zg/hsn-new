@@ -11,6 +11,8 @@ Dodati Izdanja
 Prikazati vrijeme obavijesti
 Napraviti formu za kontakt da radi
 Srediti prikaz naslova stranice (u head-u)
+Dodati crtu u 'O nama'
+U izdanjima baca error kod knjiga koje nemaju autora
 
 [Baza]
 Width i Height od formata knjige mora biti FLOAT
