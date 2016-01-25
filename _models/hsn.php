@@ -18,7 +18,7 @@
             }
 
             if ($outp[$key]['Description']) {
-                $outp[$key]['Description'] = 'Opis:<br>' . $outp[$key]['Description'] . '<br><br>';
+                $outp[$key]['Description'] = $outp[$key]['Description'] . '<br><br>';
             } else {
                 $outp[$key]['Description'] = 'Nema opisa<br><br>';
             }
