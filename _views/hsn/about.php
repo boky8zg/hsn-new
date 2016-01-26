@@ -6,7 +6,7 @@
     </div>
 
     <div class="main about">
-        <hr style="border-color: #ddd" />
+        <hr style="border-color: #d9aa49" />
         <p>
             Hrvatska sveučilišna naklada d.o.o., tvrtka je u vlasništvu Sveučilišta u 
             Zagrebu. Osnovana je 23. siječnja 1992. godine odlukom Predsjedništva 

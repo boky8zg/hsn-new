@@ -18,7 +18,7 @@
             }
 
             if ($outp[$key]['Description']) {
-                $outp[$key]['Description'] = $outp[$key]['Description'] . '<br><br>';
+                $outp[$key]['Description'] = htmlentities($outp[$key]['Description'], ENT_QUOTES) . '<br><br>';
             } else {
                 $outp[$key]['Description'] = 'Nema opisa<br><br>';
             }
