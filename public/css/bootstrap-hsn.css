@@ -168,7 +168,7 @@ footer small {
 .info-bar .book-summary {
     padding: 16px 30px;
     font-style: italic;
-    text-align: left;
+    text-align: justify;
 }
 
 .info-bar .book-price {

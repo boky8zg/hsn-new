@@ -36,7 +36,7 @@
                     <div class="brand">
                         <img height="80" style="position: relative; top: -10px;" src="/images/logo.png" alt="Hrvatska Sveučilišna Naklada" />
                         
-                        <small style="text-shadow: 0 0 5px #15150f">Hrvatska Sveučilišna Naklada</small>
+                        <small style="text-shadow: 0 0 5px #15150f">Hrvatska sveučilišna naklada</small>
                     </div>
 
                     <h3>Izbornik</h3>
